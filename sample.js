@@ -1,0 +1,1 @@
+const buff = <Buffer 5b 6f 62 6a 65 63 74 20 4f 62 6a 65 63 74 5d>;

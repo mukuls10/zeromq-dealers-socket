@@ -1,0 +1,36 @@
+//pusher
+const zmq = require('zeromq');
+
+async function runPusher() {
+  const pusher = new zmq.Push();
+
+  await pusher.bind('tcp://127.0.0.1:3000'); // Binding to a TCP address and port
+
+  console.log('Pusher service is listening on tcp://127.0.0.1:3000');
+
+  setInterval(() => {
+    const message = `Message from Pusher: hello`;
+    console.log(`Sending: ${message}`);
+    pusher.send(message);
+  }, 1000);
+}
+
+runPusher().catch((err) => console.error(err));
+
+
+//puller
+const zmq = require('zeromq');
+
+async function runPuller() {
+  const puller = new zmq.Pull();
+
+  await puller.connect('tcp://127.0.0.1:3000'); // Connecting to the pusher service
+
+  console.log('Puller service is connected to tcp://127.0.0.1:3000');
+
+  for await (const [msg] of puller) {
+    console.log(`Received: ${msg.toString()}`);
+  }
+}
+
+runPuller().catch((err) => console.error(err));
