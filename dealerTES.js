@@ -1,11 +1,11 @@
 const zmq = require("zeromq");
-const dealerC = zmq.socket("dealer");
+const dealerTES = zmq.socket("dealer");
 
 // Set an identity for this socket (optional but useful for debugging)
 // dealerA.identity = 'DealerA';
 
 // Connect to the other Dealer
-dealerC.connect("tcp://127.0.0.1:6003");
+dealerTES.connect("tcp://127.0.0.1:5556");
 
 const json = {
   symbol: "BTC-INR",
@@ -19,7 +19,7 @@ console.log(str)
 // const buffer = Buffer.from(JSON.stringify(json));
 
 // Handle incoming messages
-dealerC.on("message", (message) => {
+dealerTES.on("message", (message) => {
   console.log("Received message on DealerB2:", message.toString());
 });
 

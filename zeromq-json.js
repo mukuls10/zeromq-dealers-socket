@@ -1,4 +1,4 @@
-//JSON
+//JSON to be used in FAWSS
 {
     accountId
     symbol
@@ -10,9 +10,4 @@
     stopLoss
     takeProfit
     leverage
-}
-
-
-{
-
 }

@@ -1,16 +1,14 @@
 const zmq = require("zeromq");
-const dealerA = zmq.socket("dealer");
+const dealerFAWSS = zmq.socket("dealer");
 
 // Set an identity for this socket (optional but useful for debugging)
 // dealerA.identity = 'DealerA';
 
 // Connect to the other Dealer
-dealerA.bindSync("tcp://127.0.0.1:5555");
-
-// const buffer = Buffer.from(JSON.stringify(json));
+dealerFAWSS.bindSync("tcp://127.0.0.1:5555");
 
 // Handle incoming messages
-dealerA.on("message", (message) => {
+dealerFAWSS.on("message", (message) => {
   console.log("Received message on DealerB:", message.toString());
 });
 
@@ -31,5 +29,5 @@ setInterval(function() {
   console.timeEnd(`stringified time`)
 
   console.log(new Date(), new Date().getMilliseconds(), count);
-  dealerA.send(str);
+  dealerFAWSS.send(str);
 }, 10);

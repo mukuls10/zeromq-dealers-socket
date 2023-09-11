@@ -5,7 +5,7 @@ const dealerC = zmq.socket("dealer");
 // dealerA.identity = 'DealerA';
 
 // Connect to the other Dealer
-dealerC.connect("tcp://127.0.0.1:5556");
+dealerC.connect("tcp://127.0.0.1:6003");
 
 const json = {
   symbol: "BTC-INR",
